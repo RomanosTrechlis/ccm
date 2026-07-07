@@ -1,0 +1,20 @@
+# SETUP REQUIRED: building needs the Rust toolchain (rustup, stable MSVC) plus
+# the Visual Studio "Desktop development with C++" build tools and WebView2
+# (preinstalled on Win11). Then: `npm install` and `npm run tauri dev`.
+
+[package]
+name = "ccm"
+version = "0.1.0"
+description = "Claude Code usage monitor — visualizes ccusage JSON"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2.5", features = ["tray-icon", "image-png"] }
+tauri-plugin-store = "2"
+tokio = { version = "1", features = ["time", "process", "macros"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
